@@ -35,10 +35,13 @@ function main(
   async function deleteDataset() {
     // Construct request
     const request = {
-      parent: client.datasetPath(projectId, 'us-central1', datasetId),
+      name: client.datasetPath(projectId, 'us-central1', datasetId),
     };
 
-    const [response] = await client.deleteDataset(request);
+    const [operation] = await client.deleteDataset(request);
+
+    // Wait for operation to complete.
+    const [response] = await operation.promise();
     console.log(`Dataset deleted: ${response}`);
   }
 

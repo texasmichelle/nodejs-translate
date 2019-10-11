@@ -37,17 +37,20 @@ function main(
   async function importDataset() {
     // Construct request
     const request = {
-      parent: client.datasetPath(projectId, 'us-central1', datasetId),
+      name: client.datasetPath(projectId, 'us-central1', datasetId),
       inputConfig: {
         gcsSource: {
-          input_uris: path.split(',')
+          inputUris: path.split(',')
         },
       },
     };
 
     // Import dataset
     console.log(`Proccessing import`);
-    const [response] = await client.importDataset(request);
+    const [operation] = await client.importData(request);
+
+    // Wait for operation to complete.
+    const [response] = await operation.promise();
 
     console.log(`Dataset imported: ${response}`);
   }

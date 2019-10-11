@@ -49,6 +49,7 @@ function main(
     const [response] = await client.createDataset(request);
 
     console.log(`Dataset name: ${response.name}`);
+    console.log(`Dataset id: ${response.name.split('/')[response.name.split('/').length - 1].split('\n')[0]}`)
     console.log(`Dataset display name: ${response.displayName}`);
     console.log(`Translation dataset metadata:`);
     console.log(`\tSource language code: ${response.translationDatasetMetadata.sourceLanguageCode}`);
