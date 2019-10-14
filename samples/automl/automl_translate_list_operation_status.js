@@ -33,14 +33,14 @@ function main(
   async function listOperationStatus() {
     // Construct request
     const request = {
-      parent: client.locationPath(projectId, 'us-central1'),
-      filter_: '',
+      name: client.locationPath(projectId, 'us-central1'),
+      filter: '',
     };
 
-    const [response] = await client.listOperations(request);
+    const [response] = await client.operationsClient.listOperations(request);
 
     console.log(`List of operation status:`);
-    for (const operation of response.models) {
+    for (const operation of response) {
       console.log(`Name: ${operation.name}`);
       console.log(`Operation details:`);
       console.log(`${operation}`);

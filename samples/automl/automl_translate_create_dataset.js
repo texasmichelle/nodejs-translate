@@ -56,7 +56,7 @@ function main(
     console.log(`\tTarget language code: ${response.translationDatasetMetadata.targetLanguageCode}`);
     console.log(`Dataset create time`);
     console.log(`\tseconds ${response.createTime.seconds}`);
-    console.log(`\tnanons ${response.createTime.nanons / 1e9}`);
+    console.log(`\tnanos ${response.createTime.nanos / 1e9}`);
   }
 
   createDataset();

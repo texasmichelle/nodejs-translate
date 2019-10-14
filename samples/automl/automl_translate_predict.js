@@ -18,7 +18,7 @@
 function main(
   projectId = 'YOUR_PROJECT_ID',
   modelId = 'YOUR_MODEL_ID',
-  path = 'path_to_local_file.txt'
+  filePath = 'path_to_local_file.txt'
 ) {
   // [START automl_translate_predict]
   /**
@@ -26,10 +26,11 @@ function main(
    */
   // const projectId = 'YOUR_PROJECT_ID';
   // const modelId = 'YOUR_MODEL_ID';
-  // const path = 'path_to_local_file.txt';
+  // const filePath = 'path_to_local_file.txt';
 
   // Imports the Google Cloud AutoML library
   const {PredictionServiceClient} = require(`@google-cloud/automl`);
+  const fs = require(`fs`);
 
   // Instantiates a client
   const client = new PredictionServiceClient();
@@ -40,7 +41,7 @@ function main(
   async function predict() {
     // Construct request
     const request = {
-      parent: client.modelPath(projectId, 'us-central1', modelId),
+      name: client.modelPath(projectId, 'us-central1', modelId),
       payload: {
         textSnippet: {
           content: content,

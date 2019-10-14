@@ -34,19 +34,19 @@ function main(
     // Construct request
     const request = {
       parent: client.locationPath(projectId, 'us-central1'),
-      filter_: '',
+      filter: 'translation_model_metadata:*',
     };
 
     const [response] = await client.listModels(request);
 
     console.log(`List of models:`);
-    for (const model of response.models) {
+    for (const model of response) {
       console.log(`Model name: ${model.name}`);
-      console.log(`Model id: ${model.name.split('/')[-1]}`);
+      console.log(`Model id: ${model.name.split('/')[model.name.split('/').length - 1]}`);
       console.log(`Model display name: ${model.displayName}`);
       console.log(`Model create time`);
       console.log(`\tseconds ${model.createTime.seconds}`);
-      console.log(`\tnanons ${model.createTime.nanons / 1e9}`);
+      console.log(`\tnanos ${model.createTime.nanos / 1e9}`);
       console.log(`Model deployment state: ${model.deploymentState}`);
     }
   }

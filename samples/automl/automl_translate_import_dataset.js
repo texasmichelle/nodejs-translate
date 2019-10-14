@@ -51,7 +51,6 @@ function main(
 
     // Wait for operation to complete.
     const [response] = await operation.promise();
-
     console.log(`Dataset imported: ${response}`);
   }
 

@@ -35,17 +35,17 @@ function main(
   async function getModel() {
     // Construct request
     const request = {
-      parent: client.modelPath(projectId, 'us-central1', modelId),
+      name: client.modelPath(projectId, 'us-central1', modelId),
     };
 
     const [response] = await client.getModel(request);
     
     console.log(`Model name: ${response.name}`);
-    console.log(`Model id: ${response.name.split('/')[-1]}`);
+    console.log(`Model id: ${response.name.split('/')[response.name.split('/').length - 1]}`);
     console.log(`Model display name: ${response.displayName}`);
     console.log(`Model create time`);
     console.log(`\tseconds ${response.createTime.seconds}`);
-    console.log(`\tnanons ${response.createTime.nanons / 1e9}`);
+    console.log(`\tnanos ${response.createTime.nanos / 1e9}`);
     console.log(`Model deployment state: ${response.deploymentState}`);
   }
 

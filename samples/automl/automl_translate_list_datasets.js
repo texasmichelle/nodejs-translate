@@ -34,22 +34,24 @@ function main(
     // Construct request
     const request = {
       parent: client.locationPath(projectId, 'us-central1'),
-      filter_: 'translation_dataset_metadata:*',
+      filter: 'translation_dataset_metadata:*',
     };
 
     const [response] = await client.listDatasets(request);
 
     console.log(`List of datasets:`);
-    for (const dataset of response.datasets) {
+    for (const dataset of response) {
       console.log(`Dataset name: ${dataset.name}`);
-      console.log(`Dataset id: ${dataset.name.split('/')[-1]}`);
+      console.log(`Dataset id: ${dataset.name.split('/')[response.name.split('/').length - 1]}`);
       console.log(`Dataset display name: ${dataset.displayName}`);
-      console.log(`Translation dataset metadata:`);
-      console.log(`\tSource language code: ${dataset.translationDatasetMetadata.sourceLanguageCode}`);
-      console.log(`\tTarget language code: ${dataset.translationDatasetMetadata.targetLanguageCode}`);
+      if (dataset.translationDatasetMetadata != undefined) {
+        console.log(`Translation dataset metadata:`);
+        console.log(`\tSource language code: ${dataset.translationDatasetMetadata.sourceLanguageCode}`);
+        console.log(`\tTarget language code: ${dataset.translationDatasetMetadata.targetLanguageCode}`);
+      }
       console.log(`Dataset create time`);
       console.log(`\tseconds ${dataset.createTime.seconds}`);
-      console.log(`\tnanons ${dataset.createTime.nanons / 1e9}`);
+      console.log(`\tnanos ${dataset.createTime.nanos / 1e9}`);
     }
   }
 

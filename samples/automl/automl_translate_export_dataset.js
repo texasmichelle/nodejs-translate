@@ -37,7 +37,7 @@ function main(
   async function exportDataset() {
     // Construct request
     const request = {
-      parent: client.datasetPath(projectId, 'us-central1', datasetId),
+      name: client.datasetPath(projectId, 'us-central1', datasetId),
       outputConfig: {
         gcsDestination: {
           outputUriPrefix: gcsUri,
@@ -45,7 +45,7 @@ function main(
       },
     };
 
-    const [response] = await client.exportDataset(request);
+    const [response] = await client.exportData(request);
     console.log(`Dataset exported: ${response}`);
   }
 

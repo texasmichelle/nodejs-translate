@@ -33,10 +33,10 @@ function main(
   async function getOperationStatus() {
     // Construct request
     const request = {
-      parent: operationFullId,
+      name: operationFullId,
     };
 
-    const [response] = await client.getOperationStatus(request);
+    const [response] = await client.operationsClient.getOperation(request);
     
     console.log(`Name: ${response.name}`);
     console.log(`Operation details:`);

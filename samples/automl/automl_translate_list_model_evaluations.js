@@ -35,20 +35,20 @@ function main(
   async function listModelEvaluations() {
     // Construct request
     const request = {
-      parent: client.locationPath(projectId, 'us-central1'),
-      filter_: 'translation_dataset_metadata:*',
+      parent: client.modelPath(projectId, 'us-central1', modelId),
+      filter: '',
     };
 
     const [response] = await client.listModelEvaluations(request);
 
     console.log(`List of model evaluations:`);
-    for (const evaluation of response.modelEvaluation) {
+    for (const evaluation of response) {
       console.log(`Model evaluation name: ${evaluation.name}`);
       console.log(`Model annotation spec id: ${evaluation.annotationSpecId}`);
       console.log(`Model display name: ${evaluation.displayName}`);
       console.log(`Model create time`);
       console.log(`\tseconds ${evaluation.createTime.seconds}`);
-      console.log(`\tnanons ${evaluation.createTime.nanons / 1e9}`);
+      console.log(`\tnanos ${evaluation.createTime.nanos / 1e9}`);
       console.log(`Evaluation example count: ${evaluation.evaluatedExampleCount}`);
       console.log(`Model evaluation metrics: ${evaluation.translationEvaluationMetrics}`);
     }
