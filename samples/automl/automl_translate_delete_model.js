@@ -35,7 +35,7 @@ function main(
   async function deleteModel() {
     // Construct request
     const request = {
-      name: client.datasetPath(projectId, 'us-central1', datasetId),
+      name: client.modelPath(projectId, 'us-central1', modelId),
     };
 
     const [response] = await client.deleteModel(request);
