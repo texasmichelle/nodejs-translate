@@ -48,7 +48,6 @@ function main(
     // Don't wait for the LRO
     const operation = client.createModel(request);
     console.log(`Training started...`);
-    // TODO: Get operation name from promise.
   }
 
   createModel();
