@@ -45,7 +45,9 @@ function main(
       },
     };
 
-    const [response] = await client.exportData(request);
+    const [operation] = await client.exportData(request);
+    // Wait for operation to complete.
+    const [response] = await operation.promise();
     console.log(`Dataset exported: ${response}`);
   }
 
