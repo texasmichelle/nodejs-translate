@@ -23,8 +23,8 @@ const uuid = require('uuid');
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
-
-const MODEL_ID = 'TRL3128559826197068699';
+const DATASET_ID = 'TRL8522556519449886720';
+const MODEL_ID = 'TRL1218052175389786112';
 const LIST_MODEL_REGION_TAG = 'automl_translate_list_models';
 const GET_MODEL_REGION_TAG = 'automl_translate_get_model';
 const LIST_MODEL_EVALUATION_REGION_TAG = 'automl_translate_list_model_evaluations';
@@ -88,7 +88,7 @@ describe('Automl Translate Model Tests', () => {
   //   const projectId = await client.getProjectId();
   //   const delete_output = execSync(`node automl/${DELETE_MODEL_REGION_TAG}.js ${projectId} TRL0000000000000000000`)
 
-  //   assert.match(delete_output, /status = StatusCode.NOT_FOUND/);
-  //   assert.match(delete_output, /details = "The model does not exist."/);
+  //   assert.match(delete_output, /NOT_FOUND/);
+  //   assert.match(delete_output, /The model does not exist./);
   // });
 });
