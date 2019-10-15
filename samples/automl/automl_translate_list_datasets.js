@@ -42,7 +42,7 @@ function main(
     console.log(`List of datasets:`);
     for (const dataset of response) {
       console.log(`Dataset name: ${dataset.name}`);
-      console.log(`Dataset id: ${dataset.name.split('/')[response.name.split('/').length - 1]}`);
+      console.log(`Dataset id: ${dataset.name.split('/')[dataset.name.split('/').length - 1]}`);
       console.log(`Dataset display name: ${dataset.displayName}`);
       if (dataset.translationDatasetMetadata != undefined) {
         console.log(`Translation dataset metadata:`);
