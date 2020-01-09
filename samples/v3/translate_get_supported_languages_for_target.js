@@ -14,13 +14,13 @@
 
 'use strict';
 
-function main(projectId = 'YOUR_PROJECT_ID', location = 'global') {
+function main(projectId = 'YOUR_PROJECT_ID', location = 'us-central1') {
   // [START translate_v3_get_supported_languages_for_target]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   // const projectId = 'YOUR_PROJECT_ID';
-  // const location = 'global';
+  // const location = 'us-central1';
 
   // Imports the Google Cloud Translation library
   const {TranslationServiceClient} = require('@google-cloud/translate');
